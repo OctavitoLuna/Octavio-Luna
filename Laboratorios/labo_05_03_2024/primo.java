@@ -14,7 +14,7 @@ public class primo{
     public void setNum1(int a){
         this.a = a;
     }
-    public int getNum1(){    
+    public int getNum1(){
         return a;
     }
 }
