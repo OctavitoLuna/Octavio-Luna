@@ -1,32 +1,12 @@
 import java.util.Scanner;
 
-public class eje1Aplicacion{
-    public static void main(String[] args){
-        int numeroUno = 0;
-        int numeroDos = 0;
-        int numeroTres = 0;
-        System.out.println("Ingresa 2 numeros");
+public class eje1Aplicacion {
+    public static void main(String[] args) {
+        String palabra = "";
         Scanner cin = new Scanner(System.in);
-        System.out.print("a: ");
-        numeroUno = cin.nextInt();
-        System.out.print("b: ");
-        numeroDos = cin.nextInt();
-
-        eje1 casio = new eje1(numeroUno, numeroDos);
-        int suma = casio.sumar();
-        int restar = casio.restar();
-        int multiplicar = casio.multiplicar();
-        double dividir = casio.dividir();
-        System.out.println("Resta:" + restar);
-        System.out.println("Suma:" + suma);
-        System.out.println("Multiplicacion:" + multiplicar);
-        System.out.println("Division:" + dividir);
-
-        System.out.print("Ingrese otro numero");
-        numeroTres = cin.nextInt();
-
-        casio.setNum2(numeroTres);
-        double res2 = casio.sumar();
-        System.out.println("Suma:" + res2);
+        System.out.println("Ingresa una palabra");
+        palabra = cin.next();
+        eje1 contar = new eje1(palabra);
+        contar.contar_palabras();
     }
 }

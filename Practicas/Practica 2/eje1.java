@@ -1,46 +1,60 @@
-public class eje1{
-    public int a;
-    public int b;
+import java.util.ArrayList;
+import java.util.List;
 
-    public eje1(int a, int b){
-        this.a = a;
-        this.b = b;
+public class eje1 {
+    public String palabra;
+    public List<Character> contar_letras_char = new ArrayList<>();
+    public List<Integer> contar_letras = new ArrayList<>();
+    public Boolean iniciar = false;
+    public Boolean repetidos = false;
+    public int posicion = 0;
+
+    public eje1(String palabra) {
+        this.palabra = palabra;
+
     }
 
-    public int sumar(){
-        return getNum1() + getNum2();
-    }
-    public int restar(){
-        return getNum1() - getNum2();
-    }
-    public int multiplicar(){
-        return getNum1() * getNum2();
-    }
-    public double dividir(){
-        double res = 0;
-        if(b != 0){
-            res = getNum1() / getNum2();
+    public void contar_palabras() {
+        for (int i = 0; i < getPalabra().length(); i++) {
+            char letra = getPalabra().charAt(i);
+            if (iniciar == false) {
+                contar_letras_char.add(letra);
+                contar_letras.add(1);
+                iniciar = true;
+            } else {
+                for (int j = 0; j < contar_letras_char.size(); j++) {
+                    char letra_lista = contar_letras_char.get(j);
+                    if (letra == letra_lista) {
+                        posicion = j;
+                        repetidos = true;
+                        break;
+                    }
+                    // System.out.println(contar_letras_char.get(j));
+                }
+                if (repetidos == true) {
+                    contar_letras.set(posicion, contar_letras.get(posicion) + 1);
+                    repetidos = false;
+                } else {
+                    contar_letras_char.add(letra);
+                    contar_letras.add(1);
+                }
+            }
+
         }
-        else{
-            res = 0;
+
+        for (int k = 0; k < contar_letras_char.size(); k++) {
+            System.out.println(contar_letras_char.get(k) + ": " + contar_letras.get(k));
         }
-        return res;
+        System.out.println("Total: " + getPalabra().length());
+
     }
 
-
-
-
-
-    public void setNum1(int a){
-        this.a = a;
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
     }
-    public int getNum1(){
-        return a;
+
+    public String getPalabra() {
+        return palabra;
     }
-    public void setNum2(int b){
-        this.b = b;
-    }
-    public int getNum2(){
-        return b;
-    }
+
 }
