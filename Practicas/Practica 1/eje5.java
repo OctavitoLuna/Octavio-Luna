@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javafx.application.Application;
 
 public class eje5 {
     public static int reducir(int numero) {
