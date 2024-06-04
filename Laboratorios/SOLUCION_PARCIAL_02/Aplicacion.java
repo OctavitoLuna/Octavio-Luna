@@ -4,6 +4,8 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Aplicacion {
 
@@ -99,29 +101,37 @@ public class Aplicacion {
     public static ArrayList<Jugador> registrarJugadores (ArrayList<Jugador> equipo){
         // equipo = null;
         Jugador jugador = null;
-        int[] dorsales = new int[10];
         int[] tipoJugador = {0,1,1,1,2,2,2,2,3,3,3};
         String[] strTipoJugador = {"ARQUERO", "DEFENSA", "MEDIOCAMPISTA", "DELANTERO"};
         String nombre = "";
+        int dorsal = 0;
+        Set<Integer> dorsalesAsignados = new HashSet<>();
 
         for (int i=0; i<11; i++){
+            nombre  = JOptionPane.showInputDialog("Ingrese el nombre del "+ strTipoJugador[tipoJugador[i]]);
+            while (true) {
+                dorsal = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el dorsar del "+ strTipoJugador[tipoJugador[i]]));
+                if(dorsalesAsignados.contains(dorsal)){
+                    JOptionPane.showMessageDialog(null, "El dorsal ingresado ya existe, prueba con otro dorsal");
+                }
+                else{
+                    dorsalesAsignados.add(dorsal);
+                    break;
+                }
+            };
+
             switch (tipoJugador[i]) {
                 case 0:
-                    nombre  = JOptionPane.showInputDialog("Ingrese el nombre del "+ strTipoJugador[tipoJugador[i]]);
-
-                    jugador = new Arquero(nombre, 0, 0, 0, 0);
+                    jugador = new Arquero(nombre, dorsal, 0, 0, 0);
                     break;
                 case 1:
-                    nombre  = JOptionPane.showInputDialog("Ingrese el nombre del "+ strTipoJugador[tipoJugador[i]]);
-                    jugador = new Defensa(nombre, 0, 0, 0, 0, 0);
+                jugador = new Defensa(nombre, dorsal, 0, 0, 0, 0);
                     break;
                 case 2:
-                    nombre  = JOptionPane.showInputDialog("Ingrese el nombre del "+ strTipoJugador[tipoJugador[i]]);
-                    jugador = new Mediocampo(nombre, 0, 0, 0, 0, 0);
+                jugador = new Mediocampo(nombre, dorsal, 0, 0, 0, 0);
                     break;
                 case 3:
-                    nombre  = JOptionPane.showInputDialog("Ingrese el nombre del "+ strTipoJugador[tipoJugador[i]]);
-                    jugador = new Delantero(nombre, 0, 0, 0, 0);
+                    jugador = new Delantero(nombre, dorsal, 0, 0, 0);
                     break;
             }
             equipo.add(jugador);
