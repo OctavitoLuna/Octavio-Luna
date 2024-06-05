@@ -1,9 +1,9 @@
 public class Empleado {
     public String nombre, cedula, dependencia;
-    public Empleado(String nombre, String cedula, String dependencia){
+    public Empleado(String nombre, int ci, int salario){
         this.nombre = nombre;
-        this.cedula = cedula;
-        this.dependencia = dependencia;
+        this.cedula = ci;
+        this.dependencia = salario
     }
     public String getNombre() {
         return nombre;

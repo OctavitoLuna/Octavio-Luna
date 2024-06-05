@@ -1,4 +1,4 @@
-package labo_02_04.Notas;
+
 
 public interface OperacionesParciales {
     double par1(double par1_n);
