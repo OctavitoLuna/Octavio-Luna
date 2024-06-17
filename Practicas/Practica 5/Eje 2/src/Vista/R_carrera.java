@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import Controlador.Estudiantes;
 import Controlador.Extranjeros;
+import Controlador.Intercambio;
 import Controlador.Regulares;
 
 import javax.swing.JLabel;
@@ -93,6 +94,9 @@ public class R_carrera extends JFrame {
 						reporteCarrera.append("Idioma: ").append(((Extranjeros) estudiante).getIdioma()).append("\n");
 						reporteCarrera.append("Pasaporte: ").append(((Extranjeros) estudiante).getPasaporte()).append("\n");
 						reporteCarrera.append("Ubicacion: ").append(((Extranjeros) estudiante).getUbicacion()).append("\n");
+					}
+					else if(estudiante instanceof Intercambio) {
+						reporteCarrera.append("Anterior universidad: ").append(((Intercambio) estudiante).getAnterior_universidad()).append("\n");
 					}
 					reporteCarrera.append("\n");
 					textArea.setText(reporteCarrera.toString());

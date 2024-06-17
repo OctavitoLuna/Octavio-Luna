@@ -26,6 +26,7 @@ import Vista.P_extranjero;
 import Vista.P_regular;
 import Vista.R_carrera;
 import Vista.R_estudiante;
+import Vista.P_intercambio;
 
 public class Pantalla_1 extends JFrame {
 
@@ -78,7 +79,7 @@ public class Pantalla_1 extends JFrame {
 		});
 		
 		JButton btnNewButton_1 = new JButton("Estudiante extranjero");
-		btnNewButton_1.setBounds(357, 157, 120, 21);
+		btnNewButton_1.setBounds(357, 157, 179, 21);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,6 +111,16 @@ public class Pantalla_1 extends JFrame {
 			}
 		});
 		
+		JButton btnNewButton_4 = new JButton("Estudiante intercambio");
+		btnNewButton_4.setBounds(202, 156, 145, 23);
+		contentPane.add(btnNewButton_4);
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				P_intercambio P_intercambio = new P_intercambio();
+				P_intercambio.setVisible(true);
+				dispose();
+			}
+		});
 		
 		JButton salir = new JButton("Salir");
 		salir.setBounds(447, 35, 89, 23);
