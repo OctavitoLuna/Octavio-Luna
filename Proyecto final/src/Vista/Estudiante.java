@@ -38,7 +38,7 @@ public class Estudiante extends JFrame {
 		contentPane.add(misDatos);
 		misDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisDatos MisDatos = new MisDatos(verificadorPersona);
+				MisDatos MisDatos = new MisDatos(verificadorPersona, personaId);
 				MisDatos.setVisible(true);
 				dispose();
 			}
@@ -49,7 +49,7 @@ public class Estudiante extends JFrame {
 		contentPane.add(misMaterias);
 		misMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisMateriasEstudiante MisMateriasEstudiante = new MisMateriasEstudiante();
+				MisMateriasEstudiante MisMateriasEstudiante = new MisMateriasEstudiante(personaId);
 				MisMateriasEstudiante.setVisible(true);
 				dispose();
 			}
@@ -61,7 +61,7 @@ public class Estudiante extends JFrame {
 		contentPane.add(inscripcion);
 		inscripcion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InscribirmeEstudiante InscribirmeEstudiante = new InscribirmeEstudiante();
+				InscribirmeEstudiante InscribirmeEstudiante = new InscribirmeEstudiante(personaId);
 				InscribirmeEstudiante.setVisible(true);
 				dispose();
 			}

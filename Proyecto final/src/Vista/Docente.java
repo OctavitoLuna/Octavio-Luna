@@ -35,7 +35,7 @@ public class Docente extends JFrame {
 		contentPane.add(misDatos);
 		misDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisDatos MisDatos = new MisDatos(verificadorPersona);
+				MisDatos MisDatos = new MisDatos(verificadorPersona, personaId);
 				MisDatos.setVisible(true);
 				dispose();
 			}
@@ -46,7 +46,7 @@ public class Docente extends JFrame {
 		contentPane.add(misMaterias);
 		misMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				misMateriasDocente MisMateriasDocente = new misMateriasDocente();
+				misMateriasDocente MisMateriasDocente = new misMateriasDocente(personaId);
 				MisMateriasDocente.setVisible(true);
 				dispose();
 			}

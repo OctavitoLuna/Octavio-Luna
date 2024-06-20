@@ -14,9 +14,10 @@ public class MisNotasEstudiante extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	public int personaId;
 
 	public MisNotasEstudiante() {
+		this.personaId = personaId;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -34,7 +35,7 @@ public class MisNotasEstudiante extends JFrame {
 		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisMateriasEstudiante MisMateriasEstudiante = new MisMateriasEstudiante();
+				MisMateriasEstudiante MisMateriasEstudiante = new MisMateriasEstudiante(personaId);
 				MisMateriasEstudiante.setVisible(true);
 				dispose();
 			}

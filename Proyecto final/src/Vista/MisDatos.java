@@ -16,8 +16,9 @@ public class MisDatos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public int verificadorPersona;
-
-	public MisDatos(int verificadorPersona) {
+	private int personaId; 
+	public MisDatos(int verificadorPersona, int personaId) {
+		this.personaId = personaId;
 		this.verificadorPersona = verificadorPersona;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -47,12 +48,12 @@ public class MisDatos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(verificadorPersona == 1) {
-					Docente Docente = new Docente();
+					Docente Docente = new Docente(personaId);
 					Docente.setVisible(true);
 					dispose();
 				}
 				else {
-					Estudiante Estudiante = new Estudiante();
+					Estudiante Estudiante = new Estudiante(personaId);
 					Estudiante.setVisible(true);
 					dispose();
 				}
