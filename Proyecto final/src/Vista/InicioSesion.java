@@ -15,7 +15,7 @@ public class InicioSesion extends JFrame {
     private JPasswordField contrasenaField;
     private JButton iniciarButton;
     private JButton registrarButton;
-    private int personaId; // Para guardar el ID de la persona que inicia sesión
+    private int personaId; 
 
     public InicioSesion() {
         setTitle("Inicio de Sesión");
@@ -64,8 +64,6 @@ public class InicioSesion extends JFrame {
     private void iniciarSesion() {
         String nombre = nombreField.getText();
         String contrasena = new String(contrasenaField.getPassword());
-
-        // Modificación del SQL para buscar por nombre en lugar de correo electrónico
         String sql = "SELECT p.id_persona, e.id_estudiante, d.id_docente FROM persona p LEFT JOIN estudiantes e ON p.id_persona = e.persona_id_persona LEFT JOIN docente d ON p.id_persona = d.persona_id_persona WHERE p.nombre = ? AND p.contrasena = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -80,13 +78,13 @@ public class InicioSesion extends JFrame {
                 int idDocente = rs.getInt("id_docente");
 
                 if (idEstudiante != 0) {
-                    // Abrir ventana de estudiante si el usuario es un estudiante
+
                     JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Estudiante");
     				Estudiante Estudiante = new Estudiante(personaId);
     				Estudiante.setVisible(true);
                     dispose();
                 } else if (idDocente != 0) {
-                    // Abrir ventana de docente si el usuario es un docente
+
                     JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Docente");
                     Docente Docente = new Docente(personaId);
     				Docente.setVisible(true);
