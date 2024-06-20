@@ -15,9 +15,11 @@ public class MiAlumnoDocente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public int personaId;
+	public int numParalelo;
 
-	public MiAlumnoDocente(int personaId) {
+	public MiAlumnoDocente(int personaId, int numParalelo) {
 		this.personaId = personaId;
+		this.numParalelo = numParalelo;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -39,9 +41,9 @@ public class MiAlumnoDocente extends JFrame {
 		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisAlumnosDocente MisAlumnosDocente = new MisAlumnosDocente(personaId);
+				MisAlumnosDocente MisAlumnosDocente = new MisAlumnosDocente(personaId, numParalelo);
 				MisAlumnosDocente.setVisible(true);
-				dispose();
+                dispose();
 			}
 		});
 	}

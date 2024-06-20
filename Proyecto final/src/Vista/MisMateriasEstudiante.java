@@ -3,18 +3,26 @@ package Vista;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
+import Modelo.DatabaseConnection;
 
 public class MisMateriasEstudiante extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public int personaId;
+	private JComboBox<String> comboBox; 
 
 	public MisMateriasEstudiante(int personaId) {
 		this.personaId = personaId;
@@ -26,10 +34,12 @@ public class MisMateriasEstudiante extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 				
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox<>();
 		comboBox.setBounds(111, 94, 252, 22);
 		contentPane.add(comboBox);
-		
+
+		cargarMaterias();
+
 		JButton volver = new JButton("volver");
 		volver.setBounds(335, 11, 89, 23);
 		contentPane.add(volver);
@@ -41,16 +51,44 @@ public class MisMateriasEstudiante extends JFrame {
 			}
 		});
 		
-		
 		JButton ver = new JButton("ver");
 		ver.setBounds(188, 208, 89, 23);
 		contentPane.add(ver);
 		ver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisNotasEstudiante MisNotasEstudiante = new MisNotasEstudiante();
+				MisNotasEstudiante MisNotasEstudiante = new MisNotasEstudiante(personaId);
 				MisNotasEstudiante.setVisible(true);
 				dispose();
 			}
+		});
+	}
+
+	
+	private void cargarMaterias() {
+		String sql = "SELECT m.nombre_materia FROM materia m " +
+		             "JOIN paralelo p ON m.id_materia = p.Materia_id_materia " +
+		             "JOIN parestudiantes pe ON p.id_paralelo = pe.paralelo_id_paralelo " +
+		             "WHERE pe.estudiantes_id_estudiante = ?";
+
+		try (Connection conn = DatabaseConnection.getConnection();
+		     PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setInt(1, personaId);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				String materia = rs.getString("nombre_materia");
+				comboBox.addItem(materia);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			MisMateriasEstudiante frame = new MisMateriasEstudiante(1); 
+			frame.setVisible(true);
 		});
 	}
 }

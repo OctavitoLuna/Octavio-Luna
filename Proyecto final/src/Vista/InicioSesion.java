@@ -79,13 +79,13 @@ public class InicioSesion extends JFrame {
 
                 if (idEstudiante != 0) {
 
-                    JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Estudiante");
+                    JOptionPane.showMessageDialog(this, "Bienvenido estudiante");
     				Estudiante Estudiante = new Estudiante(personaId);
     				Estudiante.setVisible(true);
                     dispose();
                 } else if (idDocente != 0) {
 
-                    JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Docente");
+                    JOptionPane.showMessageDialog(this, "Bienvenido docente");
                     Docente Docente = new Docente(personaId);
     				Docente.setVisible(true);
                     dispose();
@@ -99,6 +99,8 @@ public class InicioSesion extends JFrame {
         }
     }
 
+    
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             new InicioSesion().setVisible(true);
