@@ -15,9 +15,12 @@ public class Estudiante extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public int verificadorPersona;
+	public int personaId;
+	
 
 
-	public Estudiante() {
+	public Estudiante(int personaId) {
+		this.personaId = personaId;
 		//Esto es para decir que somos estudiantes
 		verificadorPersona = 2;
 		

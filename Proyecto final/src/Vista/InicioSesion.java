@@ -1,85 +1,109 @@
 package Vista;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import VistaRegistro.Registro;
-
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import Modelo.DatabaseConnection;
 
 public class InicioSesion extends JFrame {
+    private JTextField nombreField;
+    private JPasswordField contrasenaField;
+    private JButton iniciarButton;
+    private JButton registrarButton;
+    private int personaId; // Para guardar el ID de la persona que inicia sesión
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtNombre;
-	private JTextField txtContrasena;
+    public InicioSesion() {
+        setTitle("Inicio de Sesión");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(null);
 
+        JLabel nombreLabel = new JLabel("Nombre");
+        nombreLabel.setBounds(50, 30, 80, 25);
+        add(nombreLabel);
 
-	public InicioSesion() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        nombreField = new JTextField();
+        nombreField.setBounds(150, 30, 100, 25);
+        add(nombreField);
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		txtNombre = new JTextField();
-		txtNombre.setText("nombre");
-		txtNombre.setBounds(160, 80, 86, 20);
-		contentPane.add(txtNombre);
-		txtNombre.setColumns(10);
-		
-		txtContrasena = new JTextField();
-		txtContrasena.setText("contrasena");
-		txtContrasena.setBounds(160, 111, 86, 20);
-		contentPane.add(txtContrasena);
-		txtContrasena.setColumns(10);
-		
-		JButton iniciar = new JButton("iniciar");
-		iniciar.setBounds(160, 185, 89, 23);
-		contentPane.add(iniciar);
-		iniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Momentaneamente
-				Docente Docente = new Docente();
-				Docente.setVisible(true);
-				dispose();
-				//Estudiante Estudiante = new Estudiante();
-				//Estudiante.setVisible(true);
-				//dispose();
-			}
-		});
+        JLabel contrasenaLabel = new JLabel("Contraseña");
+        contrasenaLabel.setBounds(50, 70, 80, 25);
+        add(contrasenaLabel);
 
-		
-		JButton registrar = new JButton("Registrar");
-		registrar.setBounds(335, 11, 89, 23);
-		contentPane.add(registrar);
-		registrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Registro Registro = new Registro();
-				Registro.setVisible(true);
-				dispose();
-			}
-		});
-		
-		
-		JButton salir = new JButton("Salir");
-		salir.setBounds(447, 35, 89, 23);
-		contentPane.add(salir);
-		salir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		
-		
-	}
+        contrasenaField = new JPasswordField();
+        contrasenaField.setBounds(150, 70, 100, 25);
+        add(contrasenaField);
+
+        iniciarButton = new JButton("Iniciar");
+        iniciarButton.setBounds(50, 110, 200, 25);
+        add(iniciarButton);
+        iniciarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                iniciarSesion();
+            }
+        });
+
+        registrarButton = new JButton("Registrar");
+        registrarButton.setBounds(50, 140, 200, 25);
+        add(registrarButton);
+        registrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Lógica para registrar un nuevo usuario (no implementada aquí)
+            }
+        });
+    }
+
+    private void iniciarSesion() {
+        String nombre = nombreField.getText();
+        String contrasena = new String(contrasenaField.getPassword());
+
+        // Modificación del SQL para buscar por nombre en lugar de correo electrónico
+        String sql = "SELECT p.id_persona, e.id_estudiante, d.id_docente FROM persona p LEFT JOIN estudiantes e ON p.id_persona = e.persona_id_persona LEFT JOIN docente d ON p.id_persona = d.persona_id_persona WHERE p.nombre = ? AND p.contrasena = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nombre);
+            stmt.setString(2, contrasena);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                personaId = rs.getInt("id_persona");
+                int idEstudiante = rs.getInt("id_estudiante");
+                int idDocente = rs.getInt("id_docente");
+
+                if (idEstudiante != 0) {
+                    // Abrir ventana de estudiante si el usuario es un estudiante
+                    JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Estudiante");
+    				Estudiante Estudiante = new Estudiante(personaId);
+    				Estudiante.setVisible(true);
+                    dispose();
+                } else if (idDocente != 0) {
+                    // Abrir ventana de docente si el usuario es un docente
+                    JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como Docente");
+                    Docente Docente = new Docente(personaId);
+    				Docente.setVisible(true);
+                    dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Nombre o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new InicioSesion().setVisible(true);
+        });
+    }
 }

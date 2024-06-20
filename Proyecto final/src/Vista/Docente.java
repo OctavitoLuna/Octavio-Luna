@@ -14,8 +14,10 @@ public class Docente extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public int verificadorPersona;
+	public int personaId;
 
-	public Docente() {
+	public Docente(int personaId) {
+		this.personaId = personaId;
 		//esto es para decir que somos docentes
 		verificadorPersona = 1;
 		
