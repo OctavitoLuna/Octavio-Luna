@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import VistaRegistro.Registro;
+
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -17,25 +21,7 @@ public class InicioSesion extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtContrasena;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InicioSesion frame = new InicioSesion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public InicioSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -66,6 +52,9 @@ public class InicioSesion extends JFrame {
 				Docente Docente = new Docente();
 				Docente.setVisible(true);
 				dispose();
+				//Estudiante Estudiante = new Estudiante();
+				//Estudiante.setVisible(true);
+				//dispose();
 			}
 		});
 
@@ -73,6 +62,13 @@ public class InicioSesion extends JFrame {
 		JButton registrar = new JButton("Registrar");
 		registrar.setBounds(335, 11, 89, 23);
 		contentPane.add(registrar);
+		registrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Registro Registro = new Registro();
+				Registro.setVisible(true);
+				dispose();
+			}
+		});
 		
 		
 		JButton salir = new JButton("Salir");

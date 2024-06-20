@@ -7,16 +7,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
 
-public class MisMateriasDocente extends JFrame {
+public class MisAlumnosDocente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public MisMateriasDocente() {
+
+	public MisAlumnosDocente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -24,41 +24,31 @@ public class MisMateriasDocente extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-				
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(89, 58, 271, 22);
-		contentPane.add(comboBox);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 166, 245, 57);
+		textArea.setBounds(55, 56, 289, 159);
 		contentPane.add(textArea);
-		
 		
 		JButton volver = new JButton("volver");
 		volver.setBounds(335, 11, 89, 23);
 		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Docente Docente = new Docente();
-				Docente.setVisible(true);
+				MisMateriasDocente MisMateriasDocente = new MisMateriasDocente();
+				MisMateriasDocente.setVisible(true);
 				dispose();
 			}
 		});
 		
-		JButton ver = new JButton("ver");
-		ver.setBounds(264, 189, 89, 23);
-		contentPane.add(ver);
-		ver.addActionListener(new ActionListener() {
+		JButton Modificar = new JButton("Modificar");
+		Modificar.setBounds(335, 226, 89, 23);
+		contentPane.add(Modificar);
+		Modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ver.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						MisAlumnosDocente MisAlumnosDocente = new MisAlumnosDocente();
-						MisAlumnosDocente.setVisible(true);
-						dispose();
-					}
-				});
+				MiAlumnoDocente MiAlumnoDocente = new MiAlumnoDocente();
+				MiAlumnoDocente.setVisible(true);
+				dispose();
 			}
 		});
 	}
-
 }

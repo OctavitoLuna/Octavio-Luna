@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import Vista.MisMateriasEstudiante;
 
 public class Estudiante extends JFrame {
 
@@ -45,16 +46,25 @@ public class Estudiante extends JFrame {
 		contentPane.add(misMaterias);
 		misMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MisMateriasEstudiante MisMateriasEstudiante = new MisMateriasEstudiante();
+				MisMateriasEstudiante.setVisible(true);
+				dispose();
 			}
 		});
 
-		JButton horario = new JButton("horario");
-		horario.setBounds(108, 46, 89, 23);
-		contentPane.add(horario);
 		
 		JButton inscripcion = new JButton("inscripcion");
 		inscripcion.setBounds(257, 157, 89, 23);
 		contentPane.add(inscripcion);
+		inscripcion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InscribirmeEstudiante InscribirmeEstudiante = new InscribirmeEstudiante();
+				InscribirmeEstudiante.setVisible(true);
+				dispose();
+			}
+		});
+		
+		
 		
 		JButton salir = new JButton("Salir");
 		salir.setBounds(334, 11, 89, 23);

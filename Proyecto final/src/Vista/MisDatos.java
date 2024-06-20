@@ -37,7 +37,7 @@ public class MisDatos extends JFrame {
 		}
 		else {
 			//devolver estudiante
-			System.out.println("Estudiante");
+			System.out.println("Estudiante");	
 		}
 		
 		JButton volver = new JButton("volver");
@@ -46,13 +46,20 @@ public class MisDatos extends JFrame {
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Docente Docente = new Docente();
-				Docente.setVisible(true);
-				dispose();
+				if(verificadorPersona == 1) {
+					Docente Docente = new Docente();
+					Docente.setVisible(true);
+					dispose();
+				}
+				else {
+					Estudiante Estudiante = new Estudiante();
+					Estudiante.setVisible(true);
+					dispose();
+				}
+
 			}
 		});
 		
 		
-
 	}
 }

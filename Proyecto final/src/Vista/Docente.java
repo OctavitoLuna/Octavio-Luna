@@ -44,19 +44,11 @@ public class Docente extends JFrame {
 		contentPane.add(misMaterias);
 		misMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				misMateriasDocente misMateriasDocente = new misMateriasDocente();
-				misMateriasDocente.setVisible(true);
+				MisMateriasDocente MisMateriasDocente = new MisMateriasDocente();
+				MisMateriasDocente.setVisible(true);
 				dispose();
 			}
 		});
-
-		JButton horario = new JButton("horario");
-		horario.setBounds(44, 157, 89, 23);
-		contentPane.add(horario);
-		
-		JButton anunciados = new JButton("anunciados");
-		anunciados.setBounds(257, 157, 89, 23);
-		contentPane.add(anunciados);
 		
 		JButton salir = new JButton("Salir");
 		salir.setBounds(447, 35, 89, 23);

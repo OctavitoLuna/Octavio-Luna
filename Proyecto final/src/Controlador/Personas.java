@@ -2,9 +2,9 @@ package Controlador;
 
 public class Personas {
 	public String nombre, apellidoP, apellidoM, contrasena, direccion, nacion, carnet, sexo, estadoCivil, correoElectronico, fechaNacimiento;
-	public int nRegistro, telefonoMovil;
+	public int telefonoMovil;
 	
-	public Personas(String nombre, String apellidoP, String apellidoM, String contrasena, String direccion, String nacion, String carnet, String sexo, String estadoCivil, String correoElectronico, String fechaNacimiento, int nRegistro, int telefonoMovil){
+	public Personas(String nombre, String apellidoP, String apellidoM, String contrasena, String direccion, String nacion, String carnet, String sexo, String estadoCivil, String correoElectronico, String fechaNacimiento, int telefonoMovil){
 		this.nombre = nombre;
 		this.apellidoP = apellidoP;
 		this.apellidoM = apellidoM;
@@ -16,7 +16,7 @@ public class Personas {
 		this.estadoCivil = estadoCivil;
 		this.correoElectronico =correoElectronico;
 		this.fechaNacimiento = fechaNacimiento;
-		this.nRegistro = nRegistro;
+		
 		this.telefonoMovil = telefonoMovil;
 	}
 
@@ -105,14 +105,6 @@ public class Personas {
 
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public int getnRegistro() {
-		return nRegistro;
-	}
-
-	public void setnRegistro(int nRegistro) {
-		this.nRegistro = nRegistro;
 	}
 
 	public int getTelefonoMovil() {

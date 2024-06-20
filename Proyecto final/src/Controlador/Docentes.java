@@ -1,11 +1,12 @@
 package Controlador;
 
 public class Docentes extends Personas{
-	String tituloAcademico, departamento, fechaContrato, tipoContrato;
-	public Docentes(String nombre, String apellidoP, String apellidoM, String contrasena, String direccion, String nacion, String carnet, String sexo, String estadoCivil, String correoElectronico, String fechaNacimiento, int nRegistro, int telefonoMovil, String tituloAcademico, String departamento, String fechaContrato, String tipoContrato) {
-		super(nombre, apellidoP, apellidoM, contrasena, direccion, nacion, carnet, sexo, estadoCivil, correoElectronico, fechaNacimiento, nRegistro, telefonoMovil);
+	String tituloAcademico, fechaContrato, tipoContrato;
+	int facultad;
+	public Docentes(String nombre, String apellidoP, String apellidoM, String contrasena, String direccion, String nacion, String carnet, String sexo, String estadoCivil, String correoElectronico, String fechaNacimiento, int telefonoMovil, String tituloAcademico, int facultad, String fechaContrato, String tipoContrato) {
+		super(nombre, apellidoP, apellidoM, contrasena, direccion, nacion, carnet, sexo, estadoCivil, correoElectronico, fechaNacimiento, telefonoMovil);
 		this.tituloAcademico = tituloAcademico;
-		this.departamento = departamento;
+		this.facultad = facultad;
 		this.fechaContrato = fechaContrato;
 		this.tipoContrato =tipoContrato;
 	}
@@ -15,11 +16,11 @@ public class Docentes extends Personas{
 	public void setTituloAcademico(String tituloAcademico) {
 		this.tituloAcademico = tituloAcademico;
 	}
-	public String getDepartamento() {
-		return departamento;
+	public int getFacultad() {
+		return facultad;
 	}
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
+	public void setFacultad(int facultad) {
+		this.facultad = facultad;
 	}
 	public String getFechaContrato() {
 		return fechaContrato;
@@ -34,5 +35,4 @@ public class Docentes extends Personas{
 		this.tipoContrato = tipoContrato;
 	}
 	
-
 }
