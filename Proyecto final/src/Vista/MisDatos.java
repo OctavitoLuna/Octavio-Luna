@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class MisDatos extends JFrame {
 
@@ -29,15 +31,16 @@ public class MisDatos extends JFrame {
 		this.personaId = personaId;
 		this.verificadorPersona = verificadorPersona;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 472, 357);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(64, 11, 283, 202);
+		textPane.setBounds(87, 43, 283, 202);
 		contentPane.add(textPane);
 		
 		if(verificadorPersona == 1) {
@@ -52,8 +55,12 @@ public class MisDatos extends JFrame {
 		cargarDatos(textPane);
 		
 		JButton volver = new JButton("volver");
-		volver.setBounds(335, 227, 89, 23);
+		volver.setBounds(341, 256, 89, 23);
 		contentPane.add(volver);
+		
+		JLabel lblNewLabel = new JLabel("Mis Datos");
+		lblNewLabel.setBounds(209, 11, 46, 14);
+		contentPane.add(lblNewLabel);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

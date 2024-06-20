@@ -16,6 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import Modelo.DatabaseConnection;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class misMateriasDocente extends JFrame {
 
@@ -29,6 +31,7 @@ public class misMateriasDocente extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(255, 255, 0));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
@@ -55,6 +58,10 @@ public class misMateriasDocente extends JFrame {
         JButton ver = new JButton("Ver");
         ver.setBounds(264, 189, 89, 23);
         contentPane.add(ver);
+        
+        JLabel lblNewLabel = new JLabel("Mis materias");
+        lblNewLabel.setBounds(180, 15, 46, 14);
+        contentPane.add(lblNewLabel);
         ver.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String selectedParalelo = (String) comboBoxParalelos.getSelectedItem();

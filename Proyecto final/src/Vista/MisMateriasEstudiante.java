@@ -16,6 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import Modelo.DatabaseConnection;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class MisMateriasEstudiante extends JFrame {
 
@@ -29,6 +31,7 @@ public class MisMateriasEstudiante extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -54,6 +57,10 @@ public class MisMateriasEstudiante extends JFrame {
 		JButton ver = new JButton("ver");
 		ver.setBounds(188, 208, 89, 23);
 		contentPane.add(ver);
+		
+		JLabel lblNewLabel = new JLabel("Mis materias");
+		lblNewLabel.setBounds(181, 32, 106, 14);
+		contentPane.add(lblNewLabel);
 		ver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MisNotasEstudiante MisNotasEstudiante = new MisNotasEstudiante(personaId);

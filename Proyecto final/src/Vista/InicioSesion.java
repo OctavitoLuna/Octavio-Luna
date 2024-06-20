@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 import Modelo.DatabaseConnection;
+import VistaRegistro.Registro;
+
+import java.awt.Color;
 
 public class InicioSesion extends JFrame {
     private JTextField nombreField;
@@ -18,31 +21,32 @@ public class InicioSesion extends JFrame {
     private int personaId; 
 
     public InicioSesion() {
+    	getContentPane().setBackground(new Color(255, 255, 0));
         setTitle("Inicio de Sesión");
-        setSize(300, 200);
+        setSize(321, 249);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(null);
+        getContentPane().setLayout(null);
 
         JLabel nombreLabel = new JLabel("Nombre");
         nombreLabel.setBounds(50, 30, 80, 25);
-        add(nombreLabel);
+        getContentPane().add(nombreLabel);
 
         nombreField = new JTextField();
         nombreField.setBounds(150, 30, 100, 25);
-        add(nombreField);
+        getContentPane().add(nombreField);
 
         JLabel contrasenaLabel = new JLabel("Contraseña");
         contrasenaLabel.setBounds(50, 70, 80, 25);
-        add(contrasenaLabel);
+        getContentPane().add(contrasenaLabel);
 
         contrasenaField = new JPasswordField();
         contrasenaField.setBounds(150, 70, 100, 25);
-        add(contrasenaField);
+        getContentPane().add(contrasenaField);
 
         iniciarButton = new JButton("Iniciar");
         iniciarButton.setBounds(50, 110, 200, 25);
-        add(iniciarButton);
+        getContentPane().add(iniciarButton);
         iniciarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,11 +56,13 @@ public class InicioSesion extends JFrame {
 
         registrarButton = new JButton("Registrar");
         registrarButton.setBounds(50, 140, 200, 25);
-        add(registrarButton);
+        getContentPane().add(registrarButton);
         registrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Lógica para registrar un nuevo usuario (no implementada aquí)
+				Registro Registro = new Registro();
+				Registro.setVisible(true);
+                dispose();
             }
         });
     }

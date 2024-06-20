@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import Vista.MisMateriasEstudiante;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class Estudiante extends JFrame {
 
@@ -25,8 +27,9 @@ public class Estudiante extends JFrame {
 		verificadorPersona = 2;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 565, 481);
+		setBounds(100, 100, 466, 327);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -72,6 +75,10 @@ public class Estudiante extends JFrame {
 		JButton salir = new JButton("Salir");
 		salir.setBounds(334, 11, 89, 23);
 		contentPane.add(salir);
+		
+		JLabel lblNewLabel = new JLabel("Bienvenido estudiante");
+		lblNewLabel.setBounds(187, 47, 137, 14);
+		contentPane.add(lblNewLabel);
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

@@ -16,6 +16,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import Modelo.DatabaseConnection;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class InscribirmeEstudiante extends JFrame {
 
@@ -29,13 +31,14 @@ public class InscribirmeEstudiante extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(255, 255, 0));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
         comboBoxParalelos = new JComboBox<>();
-        comboBoxParalelos.setBounds(111, 94, 252, 22);
+        comboBoxParalelos.setBounds(94, 106, 252, 22);
         contentPane.add(comboBoxParalelos);
 
         // funcion para cargar los paralelos al combox
@@ -55,6 +58,10 @@ public class InscribirmeEstudiante extends JFrame {
         JButton inscribirse = new JButton("Inscribirse");
         inscribirse.setBounds(188, 208, 89, 23);
         contentPane.add(inscribirse);
+        
+        JLabel lblNewLabel = new JLabel("Inscribirme a un paralelo");
+        lblNewLabel.setBounds(177, 42, 140, 14);
+        contentPane.add(lblNewLabel);
         inscribirse.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 inscribirEstudiante();
