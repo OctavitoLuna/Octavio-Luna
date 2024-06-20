@@ -5,7 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Vista.InicioSesion;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,7 +20,25 @@ public class Registro extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Registro frame = new Registro();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
+	/**
+	 * Create the frame.
+	 */
 	public Registro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -42,14 +64,21 @@ public class Registro extends JFrame {
 		registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean reg = estudiante.isSelected();
-				if (reg == true) {
+				boolean regD = docente.isSelected();
+				if (reg == true && regD == false) {
 					RegistroEstudiante RegistroEstudiante = new RegistroEstudiante();
 					RegistroEstudiante.setVisible(true);
 					dispose();
-				} else if (reg == false){
+				} else if (reg == false && regD == true){
 					RegistroDocente RegistroDocente = new RegistroDocente();
 					RegistroDocente.setVisible(true);
 					dispose();
+				}
+				else if(regD== true && reg ==true) {
+					JOptionPane.showMessageDialog(registrar, "ERROR NO PUEDES SELECCIONAR LOS DOS");
+				}
+				else if(regD== false && reg ==false) {
+					JOptionPane.showMessageDialog(registrar, "ERROR DEBES SELECCIONAR MINIMO UNA");
 				}
 			}
 		});
@@ -59,5 +88,12 @@ public class Registro extends JFrame {
 		JButton volver = new JButton("volver");
 		volver.setBounds(314, 214, 85, 21);
 		contentPane.add(volver);
+		volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InicioSesion InicioSesion = new InicioSesion();
+				InicioSesion.setVisible(true);
+				dispose();
+			}
+		});
 	}
 }

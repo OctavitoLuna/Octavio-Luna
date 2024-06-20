@@ -166,6 +166,8 @@ public class RegistroDocente extends JFrame {
 		contentPane.add(registro);
 		
 		JButton volver = new JButton("volver");
+		volver.setBounds(255, 529, 85, 21);
+		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Registro Registro = new Registro();
@@ -173,8 +175,7 @@ public class RegistroDocente extends JFrame {
 				dispose();
 			}
 		});
-		volver.setBounds(255, 529, 85, 21);
-		contentPane.add(volver);
+
 		
 		String[] lista = {"1 materia", "medio tiempo", "tiempo completo"};
 		comboBox = new JComboBox(lista);
