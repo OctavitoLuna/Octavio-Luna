@@ -34,7 +34,7 @@ public class MisAlumnosDocente extends JFrame {
 		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisMateriasDocente MisMateriasDocente = new MisMateriasDocente();
+				misMateriasDocente MisMateriasDocente = new misMateriasDocente();
 				MisMateriasDocente.setVisible(true);
 				dispose();
 			}

@@ -46,7 +46,7 @@ public class Docente extends JFrame {
 		contentPane.add(misMaterias);
 		misMaterias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MisMateriasDocente MisMateriasDocente = new MisMateriasDocente();
+				misMateriasDocente MisMateriasDocente = new misMateriasDocente();
 				MisMateriasDocente.setVisible(true);
 				dispose();
 			}
